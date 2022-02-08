@@ -6,7 +6,7 @@ import Completed from './Completed';
 const Home = () => {
 	const [todos, setTodos] = useState({});
 	const [loading, setLoading] = useState(true);
-	
+
 	useEffect(() => {
 		const url = "todos/all"
 		fetch(url)
@@ -18,14 +18,12 @@ const Home = () => {
 				}
 			})
 			.then(response => {
-				setTodos(response)
-				setLoading(false)
+				setTodos(response);
+				setLoading(false);
 			})
-			.catch((Error) => {
-				console.log("An Error occurred:");
-				console.log(Error);
-			}, []);
-			
+			.catch(() => console.log("An Error occurred:"));
+		}, []);
+
 		return (
 			<div className="vw-100 vh-100 primary-color d-flex justify-content-center">
 				<div className="jumbotron jumbotron-fluid bg-transparent">
@@ -50,4 +48,4 @@ const Home = () => {
 		)
 	}
 
-export default Home
+export default Home;
