@@ -10,7 +10,7 @@ class TodosController < ApplicationController
 
 	def update
 		to_update = Todo.find(params[:id])
-    if to_update.update_attributes!(todo_params)
+    if to_update.update!(todo_params)
       render json: {message: "Item updated successfully"}
     else
       render json: {message: "Operation failed successfully"}
@@ -20,6 +20,6 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:id, :title, :completed)
+    params.require(:todo).permit(:id, :title, :completed, :created_at, :updated_at)
   end
 end
